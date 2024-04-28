@@ -16,20 +16,23 @@ $(document).ready(function () {
     $(".list-group").on("click", ".list-group-item", function(e) {
         console.log("hallo");
 
-        e.stopPropagation();
-
         // Zeige das <small>-Element innerhalb des angeklickten list-group-items an
         //VIELLEICHT COOL DAS ANGEZEIGT WIRD--WENN ER ABGESTIMMT HAT
         $(this).find("small").show();
 
         //$(".list-group .list-group-item small").show();
-        new_appointment();
+        
 
         $("#overlay").show();
+
+
+        // Prevent event propagation to avoid immediate closing of the overlay
+        e.stopPropagation();
     });
 
     // Close the overlay when clicking outside the white box
     $(document).on("click", function(e) {
+        console.log("hallo");
         if (!$(e.target).closest('.white-box').length) {
             $("#overlay").hide();
         }
