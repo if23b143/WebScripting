@@ -7,6 +7,14 @@ $(document).ready(function () {
     $("#new_appointment").click(function() {
         new_appointment();
     });
+    
+    // Delegierung des Klick-Events für den Abbruch-Button
+    // FUNKTIONIERT NUR SO
+    $(document).on("click", "#cancel_button", function() {
+        $('#overlay_content').empty();
+        $("#overlay").hide();
+        console.log("DIES IST EIN TEST");
+    });
 
     $(".list-group .list-group-item form").hide();
 
@@ -18,7 +26,7 @@ $(document).ready(function () {
 
         // Zeige das <small>-Element innerhalb des angeklickten list-group-items an
         //VIELLEICHT COOL DAS ANGEZEIGT WIRD--WENN ER ABGESTIMMT HAT
-        $(this).find("small").show();
+        //$(this).find("small").show();
 
         //$(".list-group .list-group-item small").show();
 
@@ -38,16 +46,28 @@ $(document).ready(function () {
 
     // Close the overlay when clicking outside the white box
     $(document).on("click", function(e) {
-        console.log("hallo");
+        //console.log("hallo");
         if (!$(e.target).closest('.white-box').length) {
             $('#overlay_content').empty();
             $("#overlay").hide();
         }
     });
+
+    
 });
 
+function cancel_Button(){
+    // Event-Handler für den Abbruch-Button zuweisen
+    $("#cancel_button").click(function() {
+        // Overlay-Inhalt leeren und Overlay ausblenden
+        console.log("DIES IST EIN TEST 2")
+        $('#overlay_content').empty();
+        $("#overlay").hide();
+    });
+}
+
 function new_appointment() {
-    //alert("Hallo");
+    alert("Hallo");
     
 }
 
