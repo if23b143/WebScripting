@@ -8,7 +8,7 @@ $(document).ready(function () {
         new_appointment();
     });
 
-    $(".list-group .list-group-item small").hide();
+    $(".list-group .list-group-item form").hide();
 
     
     
@@ -21,7 +21,13 @@ $(document).ready(function () {
         $(this).find("small").show();
 
         //$(".list-group .list-group-item small").show();
-        
+
+        // Formular in das overlay einfügen und anzeigen
+        //$(".white-box").append($(this).find("form").show());
+        $(".white-box").html($(this).find("form").clone().show());
+
+
+        //$(this).find("form").show();
 
         $("#overlay").show();
 
@@ -34,6 +40,7 @@ $(document).ready(function () {
     $(document).on("click", function(e) {
         console.log("hallo");
         if (!$(e.target).closest('.white-box').length) {
+            $('#overlay_content').empty();
             $("#overlay").hide();
         }
     });

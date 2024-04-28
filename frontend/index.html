@@ -73,9 +73,9 @@
         <div class="overlay" id="overlay">
             <div class="row">
                 <div class="col-sm"></div>
-                <div class="white-box col-sm-6">
-                    Hallo<br>
-                    <!-- Details ANZEIGEN -->
+                <div class="white-box col-sm-6" id="overlay_content">
+                    
+                    <!-- TODO -->
                     <!-- Content of the white box goes here -->
                 </div>
                 <div class="col-sm"></div>
@@ -91,8 +91,22 @@
               </div>
               <p class="mb-1">von <strong>Alex</strong> </p>
               <small>Ein Meeting halten</small>
-
-              
+              <form>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
             </a>
 
             <a class="list-group-item list-group-item-action" aria-current="true">
