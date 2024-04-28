@@ -1,0 +1,34 @@
+.List { /* BRAUCH ICH DICH ÜBERHAUPT NOCH */
+        display: flex;
+        justify-content: space-between; /* Der Button wird ganz rechts ausgerichtet */
+        align-items: center; /* Zentriert die Inhalte vertikal */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Default box shadow */
+        transition: box-shadow 0.3s ease; /* Smooth transition for the box shadow */
+    }
+
+    .List:hover { /* BRAUCH ICH DICH ÜBERHAUPT NOCH */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Stronger box shadow on hover */
+    }
+
+    .row { /* BRAUCH ICH DICH ÜBERHAUPT NOCH */
+        margin-bottom: 20px; /* Fügt einen Abstand von 20 Pixeln am unteren Rand hinzu */
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+        display: none; /* Initially hide the overlay */
+        z-index: 100; /* Ensure it's above other content */
+    }
+
+    .white-box {
+        background-color: white;
+        padding: 20px;
+        margin-top: 100px; /* Adjust as needed */
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
