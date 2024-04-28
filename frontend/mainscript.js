@@ -4,9 +4,7 @@ $(document).ready(function () {
     $("#btn_Search").click(function (e) {
        loaddata($("#seachfield").val());
     });
-    $("#new_appointment").click(function() {
-        new_appointment();
-    });
+   
     
     // Delegierung des Klick-Events für den Abbruch-Button
     // FUNKTIONIERT NUR SO
@@ -16,10 +14,11 @@ $(document).ready(function () {
         console.log("DIES IST EIN TEST");
     });
 
-    $("#appointment_create").hide();
-    $("#appointment_create").click(function() {
+    $("#new_appointment").click(function() {
         new_appointment();
     });
+    $("#appointment_create").hide();
+    
     $(".list-group .list-group-item form").hide();
 
     
