@@ -20,8 +20,38 @@
                 <button class="btn btn-outline-primary" type="button" id="new_appointment">New Appointment</button> <!--SUCCESS == GREEN BUTTON-->
             </div>
         </nav>
-        </div>
+    </div>
     <div id="container">
+
+        <div class="container" id="appointment_create">
+            <form>
+                <h4>New Appointment</h4>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Name</span>
+                    <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <h5>Termine</h5>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" value="" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">12:00 - 12:30</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" value="" id="exampleCheck2">
+                    <label class="form-check-label" for="exampleCheck2">13:00 - 14:00</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" value="" id="exampleCheck3">
+                    <label class="form-check-label" for="exampleCheck3">15:00 - 16:00</label>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label"><h5>Kommentare</h5></label>
+                    <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-outline-danger" id="cancel_button">Cancel</button>
+              </form>
+        </div>
+
         <!-- As a heading -->
 
         <!-- info
@@ -33,7 +63,7 @@
             </div>
             <div class="col-sm"></div>
         </div>
-    !!!!!ALS REFERENZ VERWENDEN!!!!!!-->
+        !!!!!ALS REFERENZ VERWENDEN!!!!!!-->
 
         <!--Search field-->
         <!-- <div class="row">
@@ -141,7 +171,7 @@
         </div>
 
         <!--LISTE DER APPOINTMENTS-->
-    </div id="Appointment_Liste">
+    </div>
 
 
 

@@ -16,6 +16,10 @@ $(document).ready(function () {
         console.log("DIES IST EIN TEST");
     });
 
+    $("#appointment_create").hide();
+    $("#appointment_create").click(function() {
+        new_appointment();
+    });
     $(".list-group .list-group-item form").hide();
 
     
@@ -67,8 +71,8 @@ function cancel_Button(){
 }
 
 function new_appointment() {
-    alert("Hallo");
-    
+    //alert("Hallo");
+    $("#appointment_create").toggle(300);
 }
 
 
