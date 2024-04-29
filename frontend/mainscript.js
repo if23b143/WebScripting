@@ -11,7 +11,7 @@ $(document).ready(function () {
     $(document).on("click", "#cancel_button", function() {
         $('#overlay_content').empty();
         $("#overlay").hide();
-        console.log("DIES IST EIN TEST");
+        console.log("Cancel Button gedrückt");
     });
 
     $("#new_appointment").click(function() {
@@ -35,7 +35,7 @@ $(document).ready(function () {
 
         // Formular in das overlay einfügen und anzeigen
         //$(".white-box").append($(this).find("form").show());
-        $(".white-box").html($(this).find("form").clone().show());
+        $("#overlay_content").html($(this).find("form").clone().show());
 
 
         //$(this).find("form").show();
