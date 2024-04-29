@@ -27,12 +27,16 @@
             <form>
                 <h4>New Appointment</h4>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="new_appointment_name">Name des Appointment</span>
+                    <span class="input-group-text" id="new_appointment_name">Name des Appointments</span>
                     <input type="text" class="form-control" placeholder="zB.: Meeting, ..." aria-label="Username" aria-describedby="new_appointment_name">
                 </div>
                 <div class="input-group mb-3">
-                <span class="input-group-text" id="new_appointment_name">Name des Verfassers</span>
-                    <input type="text" class="form-control" placeholder="zB.: Max Mustermann" aria-label="Username" aria-describedby="new_appointment_name">
+                    <span class="input-group-text" id="new_appointment_ort">Ort des Appointments</span>
+                    <input type="text" class="form-control" placeholder="zB.: Wien" aria-label="Username" aria-describedby="new_appointment_ort">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="new_appointment_date">Datum</span>
+                    <input type="date" class="form-control" placeholder="zB.: 11.10.2024" aria-label="Username" aria-describedby="new_appointment_date">
                 </div>
 
                 <h5>Termine</h5>
@@ -49,13 +53,10 @@
                     <input type="text" class="form-control form-control-sm" placeholder="Auswahl 3" aria-label="Username" aria-describedby="new_appointment_select_3">
                 </div>
                 
-                
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label"><h5>Kommentare</h5></label>
-                    <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <div class="justify-content-between"> <!--FUNKTIONIERT NICHT-->
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-outline-danger" id="new_appointment">Cancel</button> <!--ID FUNKTIONIERT NICHT: NUR DIE ERSTE ID WIRD MIT "#" IM JAVASCRIPT AUFGERUFEN-->
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-outline-danger" id="new_appointment">Cancel</button> <!--ID FUNKTIONIERT NICHT: NUR DIE ERSTE ID WIRD MIT "#" IM JAVASCRIPT AUFGERUFEN-->
               </form>
         </div>
 
