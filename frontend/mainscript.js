@@ -4,18 +4,21 @@ $(document).ready(function () {
     $("#btn_Search").click(function (e) {
        loaddata($("#seachfield").val());
     });
-    $("#new_appointment").click(function() {
-        new_appointment();
-    });
+   
     
     // Delegierung des Klick-Events für den Abbruch-Button
     // FUNKTIONIERT NUR SO
     $(document).on("click", "#cancel_button", function() {
         $('#overlay_content').empty();
         $("#overlay").hide();
-        console.log("DIES IST EIN TEST");
+        console.log("Cancel Button gedrückt");
     });
 
+    $("#new_appointment").click(function() {
+        new_appointment();
+    });
+    $("#appointment_create").hide();
+    
     $(".list-group .list-group-item form").hide();
 
     
@@ -32,7 +35,7 @@ $(document).ready(function () {
 
         // Formular in das overlay einfügen und anzeigen
         //$(".white-box").append($(this).find("form").show());
-        $(".white-box").html($(this).find("form").clone().show());
+        $("#overlay_content").html($(this).find("form").clone().show());
 
 
         //$(this).find("form").show();
@@ -52,8 +55,6 @@ $(document).ready(function () {
             $("#overlay").hide();
         }
     });
-
-    
 });
 
 function cancel_Button(){
@@ -67,8 +68,8 @@ function cancel_Button(){
 }
 
 function new_appointment() {
-    alert("Hallo");
-    
+    //alert("Hallo");
+    $("#appointment_create").toggle(300);
 }
 
 
@@ -86,6 +87,5 @@ function loaddata(searchterm) {
             $("#noOfentries").val(response.length);
             $("#searchResult").show(1000).delay(1000).hide(1000);
         }
-        
     });
 }
