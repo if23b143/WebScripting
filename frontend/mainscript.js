@@ -55,8 +55,6 @@ $(document).ready(function () {
             $("#overlay").hide();
         }
     });
-
-    
 });
 
 function cancel_Button(){
@@ -89,6 +87,5 @@ function loaddata(searchterm) {
             $("#noOfentries").val(response.length);
             $("#searchResult").show(1000).delay(1000).hide(1000);
         }
-        
     });
 }
