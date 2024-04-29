@@ -35,7 +35,7 @@
                     <input type="text" class="form-control" placeholder="zB.: Wien" aria-label="Username" aria-describedby="new_appointment_ort">
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="new_appointment_date">Datum</span>
+                    <span class="input-group-text" id="new_appointment_date">Ablaufdatum des Appointments</span>
                     <input type="date" class="form-control" placeholder="zB.: 11.10.2024" aria-label="Username" aria-describedby="new_appointment_date">
                 </div>
 
@@ -114,7 +114,9 @@
             <div class="row">
                 <div class="col-sm"></div>
                 <div class="white-box col-sm-6">
-                    <h4>Details</h4>
+                    <button type="button" class="btn btn-outline-success float-end">Voting</button>
+                    <h4>Details</h4> 
+                    <br>
                         <div id="overlay_content">
                         <!-- TODO -->
                         <!-- Content goes here -->
@@ -137,7 +139,7 @@
                 <form id="form_from_list">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Name</span>
-                            <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="zB.: Max Mustermann" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         <h5>Termine</h5>
                         <div class="form-check">
