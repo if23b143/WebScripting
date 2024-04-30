@@ -34,7 +34,7 @@ $(document).ready(function () {
     
     // Event-Delegation für das Klicken auf Elemente mit der Klasse "list-group-item"
     $(".list-group").on("click", ".list-group-item", function(e) {
-        console.log("hallo");
+        //console.log("hallo");
 
         // Zeige das <small>-Element innerhalb des angeklickten list-group-items an
         //VIELLEICHT COOL DAS ANGEZEIGT WIRD--WENN ER ABGESTIMMT HAT
