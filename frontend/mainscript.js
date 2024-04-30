@@ -24,20 +24,12 @@ $(document).ready(function () {
     $(".list-group .list-group-item .content_from_list").hide();
 
     $(".voting_button").click(function() {
-        $(".statistic_button").show(200);
-        $(".voting_button").hide(200);
-
-        $("#overlay_content .form_from_list").show(200);
-        $("#overlay_content .statistic_from_list").hide(200);
+        show_form();
     });
 
     $(".statistic_button").hide();
     $(".statistic_button").click(function() {
-        $(".statistic_button").hide(200);
-        $(".voting_button").show(200);
-        
-        $("#overlay_content .form_from_list").hide(200);
-        $("#overlay_content .statistic_from_list").show(200);
+        show_statistic();
     });
     
     // Event-Delegation für das Klicken auf Elemente mit der Klasse "list-group-item"
@@ -59,6 +51,11 @@ $(document).ready(function () {
 
         $("#overlay").show();
 
+        //HIER KOMMT EINE ABFRAGE --> IF --> WENN DAS ABLAUFDATUM ERREICHT IST
+        //DIE ABFRAGE KANN ERST GEMACHT WERDEN, WENN BACKEND FERTIG
+        //LÄSST ENTWEDER DEN BUTTON VERSCHWINDEN
+        //ODER MACHT DAS FORM WEG --> BUTTON FÜHRT ZU EINEM "Sorry kein Voting möglich"
+
 
         // Prevent event propagation to avoid immediate closing of the overlay
         e.stopPropagation();
@@ -70,6 +67,8 @@ $(document).ready(function () {
         if (!$(e.target).closest('.white-box').length) {
             $('#overlay_content').empty();
             $("#overlay").hide();
+
+            show_statistic();
         }
     });
 });
@@ -83,7 +82,25 @@ function cancel_Button(){
         console.log("DIES IST EIN TEST 2")
         $('#overlay_content').empty();
         $("#overlay").hide();
+        //FIX DAS NOCH --> GIB ES IN EINE EIGENE FUNKTION
+        show_statistic();
     });
+}
+
+function show_form(){
+        $(".statistic_button").show(200);
+        $(".voting_button").hide(200);
+
+        $("#overlay_content .form_from_list").show(200);
+        $("#overlay_content .statistic_from_list").hide(200);
+}
+
+function show_statistic(){
+        $(".statistic_button").hide(200);
+        $(".voting_button").show(200);
+        
+        $("#overlay_content .form_from_list").hide(200);
+        $("#overlay_content .statistic_from_list").show(200);
 }
 
 function new_appointment() {
