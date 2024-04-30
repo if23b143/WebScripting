@@ -30,6 +30,7 @@ $(document).ready(function () {
     $(".statistic_button").click(function() {
         show_statistic();
 
+        
     });
     
     // Event-Delegation für das Klicken auf Elemente mit der Klasse "list-group-item"
