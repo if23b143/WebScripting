@@ -4,7 +4,6 @@
 $(document).ready(function () {
     $("#searchResult").hide();
     
-       loaddata();
     
    
     
@@ -76,6 +75,9 @@ $(document).ready(function () {
             show_statistic();
         }
     });
+
+    loaddata();
+    
 });
 /////////////////////////////////////////////////////////////////////////
 //////////////////////////// FUNKTIONEN /////////////////////////////////
@@ -138,6 +140,7 @@ function loaddata() {
             //$('.list-group').append($('.list-group').children().first().clone());
 
             $('.list-group').append(
+                
             '<a class="list-group-item list-group-item-action" aria-current="true">' +
             '<div class="d-flex w-100 justify-content-between">' +
               '<h5 class="mb-1">PROBE-AJAX</h5>' +
