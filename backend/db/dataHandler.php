@@ -44,10 +44,34 @@ class DataHandler
     private static function getDemoData2()
     {
 
-        $connect = 
+        $connect = connecttodb();
+        if($connect)
+        {
+            try
+            {
 
+                $query = "SELECT * FROM appointments";
+                $result = $connect->query($query);
 
+                $demodata2 = [];
+                while($row = $result->fetch_assoc())
+                {
 
+                    $appointment = new appointment($row['ID'], $row['Titel'], $row['Ort'], $row['Datum'], $row['Ablaufdatum']);
+                    $demodata2[] = $appointment; 
+
+                }
+                return $demodata2;
+            } catch(Exception $e)
+            {
+                echo "Error" . $e->getMessage();
+                return null;
+            }
+
+        } else 
+        {
+            return null;
+        }
 
     }
 }
