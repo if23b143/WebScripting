@@ -138,6 +138,7 @@ function loaddata() {
             
             
 
+
             // Das kopierte Element am Ende der .list-group anhängen
             //$('.list-group').append($('.list-group').children().first().clone());
 
