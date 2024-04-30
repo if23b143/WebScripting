@@ -1,9 +1,11 @@
 <?php
     
-    $host = "localhost";
-    $user = "bif2webscriptinguser";
-    $password = "bif2021";
-    $database = "webprojekt";
+function connecttodb(){
+
+  $host = "localhost";
+  $user = "bif2webscriptinguser";
+  $password = "bif2021";
+  $database = "webprojekt";
 
 
     $db_obj = new mysqli($host, $user, $password, $database);
@@ -11,4 +13,6 @@
       echo "Connection Error: " . $db_obj->connect_error;
      exit();
     }
+
+}   
 ?>

@@ -1,5 +1,6 @@
 <?php
 include("./models/appointment.php");
+include("./dbConfig.php");
 class DataHandler
 {
     public function queryPersons()
@@ -38,5 +39,15 @@ class DataHandler
             [new appointment(2, "title2", "Salzburg", "25.06.2024", "20.05.2024",)],
         ];
         return $demodata;
+    }
+
+    private static function getDemoData2()
+    {
+
+        $connect = 
+
+
+
+
     }
 }
