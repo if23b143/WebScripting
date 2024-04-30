@@ -4,7 +4,7 @@
 $(document).ready(function () {
     $("#searchResult").hide();
     $("#btn_Search").click(function (e) {
-       loaddata($("#seachfield").val());
+       loaddata();
     });
    
     
@@ -111,7 +111,7 @@ function new_appointment() {
 /////////////////////////////////////////////////////////////////////////
 //////////////////////////// AJAX-CALLS /////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
-function loaddata(searchterm) {
+function loaddata() {
 
     $.ajax({
         type: "GET",
