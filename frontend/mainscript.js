@@ -139,7 +139,9 @@ function loaddata() {
 
             // Das kopierte Element am Ende der .list-group anhängen
             //$('.list-group').append($('.list-group').children().first().clone());
-            for (var i = 0; i < 3; i++) {
+
+            ///////////////CHANGE THIS --> CHATGPT HAT EINE LÖSUNG --> NICHT SO GUT ABER
+            for (var i = 0; i < 2; i++) {
                 $('.list-group').append(
                     
                 '<a class="list-group-item list-group-item-action" aria-current="true">' +
