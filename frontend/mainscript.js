@@ -3,9 +3,9 @@
 /////////////////////////////////////////////////////////////////////////
 $(document).ready(function () {
     $("#searchResult").hide();
-    $("#btn_Search").click(function (e) {
+    
        loaddata();
-    });
+    
    
     
     // Delegierung des Klick-Events für den Abbruch-Button
@@ -123,12 +123,91 @@ function loaddata() {
         url: "../backend/serviceHandler.php",
         cache: false,
         //METHODE ÄNDERN
-        data: {method: "queryPersons", param: searchterm},
+        data: {method: "queryPersons", param: 0},
         dataType: "json",
         success: function (response) {
             //RESPONSE AUF UNSER PROJEKT ÄNDERN
             $("#noOfentries").val(response.length);
             $("#searchResult").show(1000).delay(1000).hide(1000);
+
+
+            
+            
+
+            // Das kopierte Element am Ende der .list-group anhängen
+            //$('.list-group').append($('.list-group').children().first().clone());
+
+            $('.list-group').append(
+            '<a class="list-group-item list-group-item-action" aria-current="true">' +
+            '<div class="d-flex w-100 justify-content-between">' +
+              '<h5 class="mb-1">PROBE-AJAX</h5>' +
+              '<small>bis <strong>22.10.2024</strong></small>' +
+            '</div>' +
+            '<p class="mb-1">von <strong>Alex</strong> </p>' +
+              '<div class="content_from_list">' +
+
+                  '<div class="statistic_from_list">' +
+                      '<ul class="list-group list-group-horizontal">' +
+                          '<li class="list-group-item list-group-item-dark">Ort</li>' +
+                          '<li class="list-group-item flex-grow-1">Wien</li>' +
+                      '</ul>' +
+                      
+                      '<br>' +
+                      '<h5>Abstimmung:</h5>' +
+                      '<ol class="list-group list-group-numbered">' +
+                          '<li class="list-group-item d-flex justify-content-between align-items-start">' +
+                              '<div class="fw-bold ms-2 me-auto">12:00 - 12:30</div>' +
+                              '<span class="badge bg-primary rounded-pill">4 Vote</span>' +
+                          '</li>' +
+                          '<li class="list-group-item d-flex justify-content-between align-items-start">' +
+                              '<div class="fw-bold ms-2 me-auto">13:00 - 14:00</div>' +
+                              '<span class="badge bg-primary rounded-pill">1 Vote</span>' +
+                          '</li>' +
+                          '<li class="list-group-item d-flex justify-content-between align-items-start">' +
+                              '<div class="fw-bold ms-2 me-auto">15:00 - 16:00</div>' +
+                              '<span class="badge bg-primary rounded-pill">14 Vote</span>' +
+                          '</li>' +
+                        '</ol>' +
+                        '<br>' +
+
+                      '<h5>Kommentare:</h5>' +
+                      '<ul class="list-group list-group-horizontal">' +
+                          '<li class="list-group-item list-group-item-dark">Alex</li>' +
+                          '<li class="list-group-item flex-grow-1">Ein tolles Meeting!</li>' + 
+                      '</ul>' +
+                  '</div>' +
+                  '<form class="form_from_list">' +
+                        '<div class="input-group mb-3">' +
+                            '<span class="input-group-text" id="basic-addon1">Name</span>' +
+                            '<input type="text" class="form-control" placeholder="zB.: Max Mustermann" aria-label="Username" aria-describedby="basic-addon1">' +
+                        '</div>' +
+                        '<h5>Termine</h5>' +
+                        '<div class="form-check">' +
+                            '<input type="checkbox" class="form-check-input" value="" id="exampleCheck1">' +
+                            '<label class="form-check-label" for="exampleCheck1">12:00 - 12:30</label>' +
+                        '</div>' +
+                        '<div class="form-check">' +
+                            '<input type="checkbox" class="form-check-input" value="" id="exampleCheck2">' +
+                            '<label class="form-check-label" for="exampleCheck2">13:00 - 14:00</label>' +
+                        '</div>' +
+                        '<div class="form-check">' +
+                            '<input type="checkbox" class="form-check-input" value="" id="exampleCheck3">' +
+                            '<label class="form-check-label" for="exampleCheck3">15:00 - 16:00</label>' +
+                        '</div>' +
+                        '<div class="mb-3">' +
+                            '<label for="exampleFormControlTextarea1" class="form-label"><h5>Kommentare</h5></label>' +
+                            '<textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>' +
+                        '</div>' +
+                        '<button type="submit" class="btn btn-primary">Submit</button>' +
+                        '<button type="button" class="btn btn-outline-danger" id="cancel_button">Cancel</button>' +
+                    '</form>' +
+                '</div>' +
+            '</a>');
+
+            $(".list-group .list-group-item .content_from_list").hide();
+
+        } , error: function(){
+            console.log("HIER IST EIN FEHLER");
         }
     });
 }
