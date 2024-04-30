@@ -1,9 +1,9 @@
 <?php
     //MUSS GEÄNDERT
     $host = "localhost";
-    $user = "hotel_user";
-    $password = "passwort";
-    $database = "hotel";
+    $user = "bif2webscriptinguser";
+    $password = "bif2021";
+    $database = "webprojekt";
 
 
     $db_obj = new mysqli($host, $user, $password, $database);
