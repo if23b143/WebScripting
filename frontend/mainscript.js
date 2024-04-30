@@ -16,14 +16,29 @@ $(document).ready(function () {
         console.log("Cancel Button gedrückt");
     });
 
-    $("#new_appointment").click(function() {
+    $(".new_appointment").click(function() {
         new_appointment();
     });
     $("#appointment_create").hide();
     
-    $(".list-group .list-group-item form").hide();
+    $(".list-group .list-group-item .content_from_list").hide();
 
-    
+    $(".voting_button").click(function() {
+        $(".statistic_button").show(200);
+        $(".voting_button").hide(200);
+
+        $("#overlay_content .form_from_list").show(200);
+        $("#overlay_content .statistic_from_list").hide(200);
+    });
+
+    $(".statistic_button").hide();
+    $(".statistic_button").click(function() {
+        $(".statistic_button").hide(200);
+        $(".voting_button").show(200);
+        
+        $("#overlay_content .form_from_list").hide(200);
+        $("#overlay_content .statistic_from_list").show(200);
+    });
     
     // Event-Delegation für das Klicken auf Elemente mit der Klasse "list-group-item"
     $(".list-group").on("click", ".list-group-item", function(e) {
@@ -37,9 +52,9 @@ $(document).ready(function () {
 
         // Formular in das overlay einfügen und anzeigen
         //$(".white-box").append($(this).find("form").show());
-        $("#overlay_content").html($(this).find("form").clone().show());
+        $("#overlay_content").html($(this).find(".content_from_list").clone().show());
 
-
+        $("#overlay_content .form_from_list").hide();
         //$(this).find("form").show();
 
         $("#overlay").show();

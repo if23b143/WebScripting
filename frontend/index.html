@@ -17,7 +17,7 @@
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1"><h4>Appointment-Finder</h4></span>
-                <button class="btn btn-outline-primary" type="button" id="new_appointment">New Appointment</button> <!--SUCCESS == GREEN BUTTON-->
+                <button class="btn btn-outline-primary new_appointment" type="button">New Appointment</button>
             </div>
         </nav>
     </div>
@@ -55,7 +55,7 @@
                 
                 <div class="justify-content-between"> <!--FUNKTIONIERT NICHT-->
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="button" class="btn btn-outline-danger" id="new_appointment">Cancel</button> <!--ID FUNKTIONIERT NICHT: NUR DIE ERSTE ID WIRD MIT "#" IM JAVASCRIPT AUFGERUFEN-->
+                    <button type="button" class="btn btn-outline-danger new_appointment">Cancel</button> <!--ID FUNKTIONIERT NICHT: NUR DIE ERSTE ID WIRD MIT "#" IM JAVASCRIPT AUFGERUFEN-->
                 </div>
               </form>
         </div>
@@ -114,15 +114,14 @@
             <div class="row">
                 <div class="col-sm"></div>
                 <div class="white-box col-sm-6">
-                    <button type="button" class="btn btn-outline-success float-end">Voting</button>
+                    <button type="button" class="btn btn-outline-success float-end voting_button">Voting</button>
+                    <button type="button" class="btn btn-outline-success float-end statistic_button">Statistic</button>
                     <h4>Details</h4> 
                     <br>
                         <div id="overlay_content">
                         <!-- TODO -->
                         <!-- Content goes here -->
                         </div>
-                    <button type="submit" class="btn btn-primary" form="form_from_list">Submit</button>
-                    <button type="button" class="btn btn-outline-danger" id="cancel_button">Cancel</button>
                 </div>
                 <div class="col-sm"></div>
             </div>
@@ -136,9 +135,11 @@
                 <small>bis <strong>22.10.2024</strong></small>
               </div>
               <p class="mb-1">von <strong>Alex</strong> </p>
-                <div id="content_from_list">
-                    
-                    <form id="form_from_list">
+                <div class="content_from_list">
+                    <div class="statistic_from_list">
+                        <h4>HALLO</h4>
+                    </div>
+                    <form class="form_from_list">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Name</span>
                             <input type="text" class="form-control" placeholder="zB.: Max Mustermann" aria-label="Username" aria-describedby="basic-addon1">
@@ -160,6 +161,8 @@
                             <label for="exampleFormControlTextarea1" class="form-label"><h5>Kommentare</h5></label>
                             <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-outline-danger" id="cancel_button">Cancel</button>
                     </form>
                 </div>
             </a>
