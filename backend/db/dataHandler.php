@@ -44,7 +44,7 @@ class DataHandler
     private static function getDemoData2()
     {
 
-        $connect = connecttodb();
+         $connect = connecttodb();
         if($connect)
         {
             try
