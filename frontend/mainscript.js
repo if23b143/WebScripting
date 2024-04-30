@@ -48,8 +48,13 @@ $(document).ready(function () {
 
         $("#overlay_content .form_from_list").hide();
         //$(this).find("form").show();
+        
+        $('.white-box h4').text($(this).find('h5:first').text());
 
         $("#overlay").show();
+
+
+        
 
         //HIER KOMMT EINE ABFRAGE --> IF --> WENN DAS ABLAUFDATUM ERREICHT IST
         //DIE ABFRAGE KANN ERST GEMACHT WERDEN, WENN BACKEND FERTIG
