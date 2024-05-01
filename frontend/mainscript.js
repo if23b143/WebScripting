@@ -134,8 +134,8 @@ function loaddata() {
             $("#searchResult").show(1000).delay(1000).hide(1000);
 
 
-            
-            
+            console.log(response);
+            console.log(response[0][0].ort);
             
 
 
@@ -143,12 +143,12 @@ function loaddata() {
             //$('.list-group').append($('.list-group').children().first().clone());
 
             ///////////////CHANGE THIS --> CHATGPT HAT EINE LÖSUNG --> NICHT SO GUT ABER
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 2; i++) {
                 $('.appointment-group').append(
                     
                 '<a class="list-group-item list-group-item-action" aria-current="true">' +
                     '<div class="d-flex w-100 justify-content-between">' +
-                        '<h5 class="mb-1">PROBE-AJAX</h5>' +
+                        '<h5 class="mb-1">' + response[i][0].titel + '</h5>' +
                         '<small>bis <strong>22.10.2024</strong></small>' +
                     '</div>' +
                     '<p class="mb-1">von <strong>Alex</strong> </p>' +
@@ -184,7 +184,7 @@ function loaddata() {
                                 '<li class="list-group-item flex-grow-1">Ein tolles Meeting!</li>' + 
                             '</ul>' +
                         '</div>' +
-                        
+
                         '<form class="form_from_list">' +
                                 '<div class="input-group mb-3">' +
                                     '<span class="input-group-text" id="basic-addon1">Name</span>' +
