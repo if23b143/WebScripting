@@ -16,7 +16,7 @@ class appointment {
         $this->ort = $ort;
         $this->datum = $datum;
         $this->ablaufdatum = $ablaufdatum;
-        $this->Auswahl1 = $Auswahl1
+        $this->Auswahl1 = $Auswahl1;
         $this->Auswahl2 = $Auswahl2;
         $this->Auswahl3 = $Auswahl3;
 

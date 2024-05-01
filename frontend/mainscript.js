@@ -150,7 +150,8 @@ function loaddata() {
 
 
             console.log(response);
-            console.log(response[0][0].ort);
+            //console.log(response[0][0].ort);
+
             
 
 
@@ -158,12 +159,14 @@ function loaddata() {
             //$('.list-group').append($('.list-group').children().first().clone());
 
             ///////////////CHANGE THIS --> CHATGPT HAT EINE LÖSUNG --> NICHT SO GUT ABER
-            for (var i = 0; i < 2; i++) {
+           response.forEach(element => {
+             //for (var i = 0; i < 2; i++) {
+          
                 $('.appointment-group').append(
                     
                 '<a class="list-group-item list-group-item-action" aria-current="true">' +
                     '<div class="d-flex w-100 justify-content-between">' +
-                        '<h5 class="mb-1">' + response[i][0].titel + '</h5>' +
+                        '<h5 class="mb-1">' + element.titel +'</h5>' +
                         '<small>bis <strong>22.10.2024</strong></small>' +
                     '</div>' +
                     '<p class="mb-1">von <strong>Alex</strong> </p>' +
@@ -172,22 +175,22 @@ function loaddata() {
                         '<div class="statistic_from_list">' +
                             '<ul class="list-group list-group-horizontal">' +
                                 '<li class="list-group-item list-group-item-dark">Ort</li>' +
-                                '<li class="list-group-item flex-grow-1">Wien</li>' +
+                                '<li class="list-group-item flex-grow-1">'+ element.ort +'</li>' +
                             '</ul>' +
                             
                             '<br>' +
                             '<h5>Abstimmung:</h5>' +
                             '<ol class="list-group list-group-numbered">' +
                                 '<li class="list-group-item d-flex justify-content-between align-items-start">' +
-                                    '<div class="fw-bold ms-2 me-auto">12:00 - 12:30</div>' +
+                                    '<div class="fw-bold ms-2 me-auto">' + element.Auswahl1 + '</div>' +
                                     '<span class="badge bg-primary rounded-pill">4 Vote</span>' +
                                 '</li>' +
                                 '<li class="list-group-item d-flex justify-content-between align-items-start">' +
-                                    '<div class="fw-bold ms-2 me-auto">13:00 - 14:00</div>' +
+                                    '<div class="fw-bold ms-2 me-auto">' + element.Auswahl2 + '</div>' +
                                     '<span class="badge bg-primary rounded-pill">1 Vote</span>' +
                                 '</li>' +
                                 '<li class="list-group-item d-flex justify-content-between align-items-start">' +
-                                    '<div class="fw-bold ms-2 me-auto">15:00 - 16:00</div>' +
+                                    '<div class="fw-bold ms-2 me-auto">' + element.Auswahl3 + '</div>' +
                                     '<span class="badge bg-primary rounded-pill">14 Vote</span>' +
                                 '</li>' +
                             '</ol>' +
@@ -227,7 +230,7 @@ function loaddata() {
                             '</form>' +
                     '</div>' +
                 '</a>');
-            }
+            });
 
             $(".list-group .list-group-item .content_from_list").hide();
 
