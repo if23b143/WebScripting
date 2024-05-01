@@ -234,8 +234,10 @@ function loaddata() {
 
             $(".list-group .list-group-item .content_from_list").hide();
 
-        } , error: function(){
+        } , error: function(xhr){
             console.log("HIER IST EIN FEHLER");
+            var errorMessage = xhr.status + ': ' + xhr.statusText;
+            console.log('AJAX Error: ' + errorMessage);
         }
     });
 }
@@ -278,6 +280,8 @@ function vote_in_appointment(){
 
         } , error: function(){
             console.log("HIER IST EIN FEHLER IM VOTE APPOINTMENT");
+            var errorMessage = xhr.status + ': ' + xhr.statusText;
+            console.log('AJAX Error: ' + errorMessage);
         }
     });
 }
