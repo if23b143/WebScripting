@@ -75,7 +75,7 @@ class DataHandler
                 while($row = $result->fetch_assoc())
                 {
 
-                    $appointment = new appointment($row['ID'], $row['Titel'], $row['Ort'], $row['Datum'], $row['Ablaufdatum']);
+                    $appointment = new appointment($row['ID'], $row['Titel'], $row['Ort'], $row['Datum'], $row['Ablaufdatum'], $row['Auswahl1'], $row['Auswahl2'], $row['Auswahl3']);
                     $demodata2[] = $appointment; 
 
                 }
