@@ -141,7 +141,7 @@ function loaddata() {
         url: "../backend/serviceHandler.php",
         cache: false,
         //METHODE ÄNDERN
-        data: {method: "queryPersons", param: 0},
+        data: {method: "queryAppointments", param: 0},
         dataType: "json",
         success: function (response) {
             //RESPONSE AUF UNSER PROJEKT ÄNDERN
@@ -243,7 +243,7 @@ function create_new_appointment(){
         url: "../backend/serviceHandler.php",
         cache: false,
         //METHODE ÄNDERN
-        data: {method: "queryPersons", param: 0},
+        data: {method: "create_new_appointment", param: 0},
         dataType: "json",
         success: function (response) {
             //RESPONSE AUF UNSER PROJEKT ÄNDERN
@@ -264,7 +264,7 @@ function vote_in_appointment(){
         url: "../backend/serviceHandler.php",
         cache: false,
         //METHODE ÄNDERN
-        data: {method: "queryPersons", param: 0},
+        data: {method: "vote_in_appointment", param: 0},
         dataType: "json",
         success: function (response) {
             //RESPONSE AUF UNSER PROJEKT ÄNDERN
