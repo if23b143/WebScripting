@@ -75,6 +75,7 @@ class DataHandler
             return null;
         }
 
+        $connect->close();
     }
 
         //Die Eingegebenen Informationen werden in die Datenbank eingetragen
@@ -83,7 +84,7 @@ class DataHandler
 
         $apName;
         $apOrt;
-        $apdate;
+        $apabdate;
         $apSelect1;
         $apSelect2;
         $apSelect3;
@@ -98,16 +99,17 @@ class DataHandler
 
                 $apName = $_POST['new_appointment_name'];
                 $apOrt = $_POST['new_appointment_ort'];
-                $apdate = $_POST['new_appointment_date'];
+                $apabdate = $_POST['new_appointment_date'];
                 $apSelect1 = $_POST['new_appointment_select_1'];
                 $apSelect2 = $_POST['new_appointment_select_2'];
                 $apSelect3 = $_POST['new_appointment_select_3'];
 
-                $query = "INSERT INTO appointments (Titel, Ort, Datum, Ablaufdatum) VALUES ('$apName', '$apOrt', '$apdate', '$apSelect1', '$apSelect2', '$apSelect3')";
 
+                $query = "INSERT INTO appointments (Titel, Ort, Ablaufdatum, Auswahl1, Auswahl2, Auswahl3) VALUES ('$apName', '$apOrt', '$apabdate', '$apSelect1', '$apSelect2', '$apSelect3')";
+                
                 //Hier wird geprüft ob die Eintragung erfolgreich war
 
-                if($connect->query($query) === TRUE) 
+                if($connect->query($query) === TRUE && $connect->query($query2) === TRUE) 
                 {
                     echo("Appointment erfolgreich angelegt!");
                 }
@@ -120,7 +122,41 @@ class DataHandler
 
         }
 
+        $connect->close();
+
     }
 
+
+    private static function putintodatabase2()
+    {
+
+        $connect = connecttodb();
+
+        $Name;
+        $apTermin1;
+        $apTermin2;
+        $apTermin3;
+        $Comment;
+
+        if($_SERVER["REQUEST_METHOD"] == "POST")
+        {
+            if(!empty($_POST['Username']))
+        }
+
+        $Name = $_POST['Username']
+
+    //nicht fertig
+        $apTermin1 = $_POST['new_appointment_select_1'];
+        $apTermin2 = $_POST['new_appointment_select_2'];
+        $apTermin3 = $_POST['new_appointment_select_3'];
+
+
+        $query2 = "INSERT INTO voting (Username, Termin1, Termin2, Termin3, Kommentar) VALUES ('$Name', '$apTermin1', '$apTermin2', '$apTermin3', '$Comment')";
+
+        $connect->close();
+    //..............................
+
+
+    }
 
 }
