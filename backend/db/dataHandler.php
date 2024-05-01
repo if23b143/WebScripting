@@ -68,7 +68,7 @@ class DataHandler
             try
             {
 
-                $query = "SELECT * FROM appointments";
+                $query = "SELECT * FROM appointments Left JOIN voting on appointments.ID = voting.Appointment_ID_FK";
                 $result = $connect->query($query);
 
                 $demodata2 = [];
@@ -76,6 +76,15 @@ class DataHandler
                 {
 
                     $appointment = new appointment($row['ID'], $row['Titel'], $row['Ort'], $row['Datum'], $row['Ablaufdatum'], $row['Auswahl1'], $row['Auswahl2'], $row['Auswahl3']);
+                    
+                    $appointment->setVotingID($row['voting_ID']);
+                    $appointment->setUsername($row['Username']);
+                    $appointment->setAppointmentIDFK($row['Appointment_ID_FK']);
+                    $appointment->setTermin1($row['Termin1']);
+                    $appointment->setTermin2($row['Termin2']);
+                    $appointment->setTermin3($row['Termin3']);
+                    $appointment->setKommentar($row['Kommentar']);
+
                     $demodata2[] = $appointment; 
 
                 }
@@ -154,6 +163,37 @@ class DataHandler
         $apTermin3;
         $Comment;
 
+        if($connect)
+        {
+            try
+            {
+
+                $query = "SELECT * FROM voting";
+                $result = $connect->query($query);
+
+                $demodata3 = [];
+                while($row = $result->fetch_assoc())
+                {
+
+                    $voting = new voting($row['voting_ID'], $row['Username'], $row['Termin1'], $row['Termin2'], $row['Termin3'], $row['Kommentar'], $row['Appointment_ID_FK']);
+                    $demodata3[] = $voting; 
+
+                }
+                return $demodata3;
+            } catch(Exception $e)
+            {
+                echo "Error" . $e->getMessage();
+                return null;
+            }
+
+        } else 
+        {
+            return null;
+        }
+
+        $connect->close();
+
+     /*
         if($_SERVER["REQUEST_METHOD"] == "POST")
         {
             if(!empty($_POST['Username']))
@@ -171,11 +211,11 @@ class DataHandler
             //..............................
 
 
-
+                
 
             }
         }
-
+        */
     }
 
 }
