@@ -159,7 +159,7 @@ function loaddata() {
             //$('.list-group').append($('.list-group').children().first().clone());
 
             ///////////////CHANGE THIS --> CHATGPT HAT EINE LÖSUNG --> NICHT SO GUT ABER
-           response.forEach(element => {
+           response[0].appointment.forEach(element => {
              //for (var i = 0; i < 2; i++) {
           
                 $('.appointment-group').append(

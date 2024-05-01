@@ -5,8 +5,14 @@ class DataHandler
 {
     public function queryAppointments()
     {
-        $res =  $this->getDemoData2();
-        return $res;
+        $appointment =  $this->getDemoData2();
+        $voting =  $this->putintodatabase2();
+
+        $combinedData[] = [
+            'appointment' => $appointment,
+            'voting' => $voting
+        ];
+        return $combinedData;
     }
 
     public function create_new_appointment()
@@ -67,8 +73,8 @@ class DataHandler
         {
             try
             {
-
-                $query = "SELECT * FROM appointments Left JOIN voting on appointments.ID = voting.Appointment_ID_FK";
+                $query = "SELECT * FROM appointments";
+                //$query = "SELECT * FROM appointments ";
                 $result = $connect->query($query);
 
                 $demodata2 = [];
@@ -76,16 +82,31 @@ class DataHandler
                 {
 
                     $appointment = new appointment($row['ID'], $row['Titel'], $row['Ort'], $row['Datum'], $row['Ablaufdatum'], $row['Auswahl1'], $row['Auswahl2'], $row['Auswahl3']);
-                    
+                    //$voting = new appointment($row['Appointment_ID_FK'], $row['Titel'], $row['Ort'], $row['Datum'], $row['Ablaufdatum'], $row['Auswahl1'], $row['Auswahl2'], $row['Auswahl3']);
+
+                    /*
                     $appointment->setVotingID($row['voting_ID']);
                     $appointment->setUsername($row['Username']);
                     $appointment->setAppointmentIDFK($row['Appointment_ID_FK']);
                     $appointment->setTermin1($row['Termin1']);
                     $appointment->setTermin2($row['Termin2']);
                     $appointment->setTermin3($row['Termin3']);
-                    $appointment->setKommentar($row['Kommentar']);
+                    $appointment->setKommentar($row['Kommentar']); 
 
-                    $demodata2[] = $appointment; 
+                    $voting_query = "SELECT * FROM voting WHERE Appointment_ID_FK = 1";
+                    $voting_result = $connect->query($voting_query);
+
+                    while($voting_row = $voting_result->fetch_assoc())
+                    {
+                        $voting = new voting($voting_row['voting_ID'], $voting_row['Username'], $voting_row['Termin1'], $voting_row['Termin2'], $voting_row['Termin3'], $voting_row['Kommentar'], $voting_row['Appointment_ID_FK']);
+                    }
+                    
+                    $combinedData[] = [
+                        'appointment' => $appointment,
+                        'voting' => $voting
+                    ]; */
+                    
+                    $demodata2[] = $appointment;
 
                 }
                 return $demodata2;
