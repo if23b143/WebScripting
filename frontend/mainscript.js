@@ -167,7 +167,7 @@ function loaddata() {
                 '<a class="list-group-item list-group-item-action" aria-current="true">' +
                     '<div class="d-flex w-100 justify-content-between">' +
                         '<h5 class="mb-1">' + element.titel +'</h5>' +
-                        '<small>bis <strong>22.10.2024</strong></small>' +
+                        '<small>bis <strong>' + element.ablaufdatum +'</strong></small>' +
                     '</div>' +
                     '<p class="mb-1">von <strong>Alex</strong> </p>' +
                     '<div class="content_from_list">' +
@@ -203,7 +203,7 @@ function loaddata() {
                             '</ul>' +
                         '</div>' +
 
-                        '<form class="form_from_list">' +
+                        '<form class="form_from_list" id=' + element.id + '>' +
                                 '<div class="input-group mb-3">' +
                                     '<span class="input-group-text" id="basic-addon1">Name</span>' +
                                     '<input type="text" class="form-control" placeholder="zB.: Max Mustermann" aria-label="Username" aria-describedby="basic-addon1">' +
@@ -211,15 +211,15 @@ function loaddata() {
                                 '<h5>Termine</h5>' +
                                 '<div class="form-check">' +
                                     '<input type="checkbox" class="form-check-input" value="" id="exampleCheck1">' +
-                                    '<label class="form-check-label" for="exampleCheck1">12:00 - 12:30</label>' +
+                                    '<label class="form-check-label" for="exampleCheck1">' + element.Auswahl1 + '</label>' +
                                 '</div>' +
                                 '<div class="form-check">' +
                                     '<input type="checkbox" class="form-check-input" value="" id="exampleCheck2">' +
-                                    '<label class="form-check-label" for="exampleCheck2">13:00 - 14:00</label>' +
+                                    '<label class="form-check-label" for="exampleCheck2">' + element.Auswahl2 + '</label>' +
                                 '</div>' +
                                 '<div class="form-check">' +
                                     '<input type="checkbox" class="form-check-input" value="" id="exampleCheck3">' +
-                                    '<label class="form-check-label" for="exampleCheck3">15:00 - 16:00</label>' +
+                                    '<label class="form-check-label" for="exampleCheck3">' + element.Auswahl3 + '</label>' +
                                 '</div>' +
                                 '<div class="mb-3">' +
                                     '<label for="exampleFormControlTextarea1" class="form-label"><h5>Kommentare</h5></label>' +
