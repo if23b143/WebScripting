@@ -18,6 +18,7 @@ $(document).ready(function () {
     $(".new_appointment").click(function() {
         new_appointment();
     });
+
     $("#appointment_create").hide();
     
     $(".list-group .list-group-item .content_from_list").hide();
@@ -29,7 +30,6 @@ $(document).ready(function () {
     $(".statistic_button").hide();
     $(".statistic_button").click(function() {
         show_statistic();
-
     });
     
     // Event-Delegation für das Klicken auf Elemente mit der Klasse "list-group-item"
@@ -144,7 +144,7 @@ function loaddata() {
 
             ///////////////CHANGE THIS --> CHATGPT HAT EINE LÖSUNG --> NICHT SO GUT ABER
             for (var i = 0; i < 2; i++) {
-                $('.list-group').append(
+                $('.appointment-group').append(
                     
                 '<a class="list-group-item list-group-item-action" aria-current="true">' +
                 '<div class="d-flex w-100 justify-content-between">' +
