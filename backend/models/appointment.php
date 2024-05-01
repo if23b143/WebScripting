@@ -22,3 +22,24 @@ class appointment {
 
       }
 }
+
+class voting {
+  public $voting_id;
+  public $Username;
+  public $Termin1;
+  public $Termin2;
+  public $Termin3;
+  public $Kommentar;
+  public $Appointment_ID_FK;
+
+  function __construct($voting_id, $Username, $Termin1, $Termin2, $Termin3, $Kommentar, $Appointment_ID_FK) {
+      $this->voting_ID = $voting_id;
+      $this->Username = $Username;
+      $this->Termin1 = $Termin1;
+      $this->Termin2 = $Termin2;
+      $this->Termin3 = $Termin3;
+      $this->Kommentar = $Kommentar;
+      $this->Appointment_ID_FK = $Appointment_ID_FK;
+      
+    }
+}
