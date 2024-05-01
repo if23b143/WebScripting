@@ -77,6 +77,21 @@ $(document).ready(function () {
         }
     });
 
+    $('.form_from_appointment_create').submit(function(event) {
+       
+    
+        // Führe die Funktion create_new_appointment() aus, wenn das Formular abgeschickt wird
+        create_new_appointment();
+    });
+
+    $('.form_from_list').submit(function(event) {
+        event.preventDefault(); // Verhindert das Standardverhalten des Formulars (Seite neu laden)
+    
+        // Führe die Funktion create_new_appointment() aus, wenn das Formular abgeschickt wird
+        vote_in_appointment();
+    });
+    
+
     loaddata();
     
 });
@@ -218,6 +233,48 @@ function loaddata() {
 
         } , error: function(){
             console.log("HIER IST EIN FEHLER");
+        }
+    });
+}
+
+function create_new_appointment(){
+    $.ajax({
+        type: "GET",
+        url: "../backend/serviceHandler.php",
+        cache: false,
+        //METHODE ÄNDERN
+        data: {method: "queryPersons", param: 0},
+        dataType: "json",
+        success: function (response) {
+            //RESPONSE AUF UNSER PROJEKT ÄNDERN
+           console.log("CREATE APPOINTMENT FUNKTIONIERT");
+
+
+
+
+        } , error: function(){
+            console.log("HIER IST EIN FEHLER IM CREATE APPOINTMENT");
+        }
+    });
+}
+
+function vote_in_appointment(){
+    $.ajax({
+        type: "GET",
+        url: "../backend/serviceHandler.php",
+        cache: false,
+        //METHODE ÄNDERN
+        data: {method: "queryPersons", param: 0},
+        dataType: "json",
+        success: function (response) {
+            //RESPONSE AUF UNSER PROJEKT ÄNDERN
+           alert("VOTE APPOINTMENT FUNKTIONIERT");
+
+
+
+
+        } , error: function(){
+            console.log("HIER IST EIN FEHLER IM VOTE APPOINTMENT");
         }
     });
 }
