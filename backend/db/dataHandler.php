@@ -41,6 +41,8 @@ class DataHandler
         return $demodata;
     }
 
+    //Holt die Informationen aus der appointment Datenbank
+
     private static function getDemoData2()
     {
 
@@ -74,4 +76,51 @@ class DataHandler
         }
 
     }
+
+        //Die Eingegebenen Informationen werden in die Datenbank eingetragen
+    private static function putintodatabase()
+    {
+
+        $apName;
+        $apOrt;
+        $apdate;
+        $apSelect1;
+        $apSelect2;
+        $apSelect3;
+
+        $connect = connecttodb();
+
+        if($_SERVER["REQUEST_METHOD"] == "POST")
+        {
+            //Hier wird geprüft ob die einzelnen Felder leer sind oder nicht
+            if(!empty($_POST['new_appointment_name']) && !empty($_POST['new_appointment_ort']) && !empty($_POST['new_appointment_date']) && !empty($_POST['new_appointment_select_1']) && !empty($_POST['new_appointment_select_2']) && !empty($_POST['new_appointment_select_3']))
+            {
+
+                $apName = $_POST['new_appointment_name'];
+                $apOrt = $_POST['new_appointment_ort'];
+                $apdate = $_POST['new_appointment_date'];
+                $apSelect1 = $_POST['new_appointment_select_1'];
+                $apSelect2 = $_POST['new_appointment_select_2'];
+                $apSelect3 = $_POST['new_appointment_select_3'];
+
+                $query = "INSERT INTO appointments (Titel, Ort, Datum, Ablaufdatum) VALUES ('$apName', '$apOrt', '$apdate', '$apSelect1', '$apSelect2', '$apSelect3')";
+
+                //Hier wird geprüft ob die Eintragung erfolgreich war
+
+                if($connect->query($query) === TRUE) 
+                {
+                    echo("Appointment erfolgreich angelegt!");
+                }
+                else
+                {
+                    echo("Ein Unbekannter Fehler ist aufgetreten!");
+                }
+
+            }
+
+        }
+
+    }
+
+
 }
