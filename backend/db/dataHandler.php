@@ -3,12 +3,13 @@ include("./models/appointment.php");
 include("./dbConfig.php");
 class DataHandler
 {
-    public function queryPersons()
+    public function queryAppointment()
     {
         $res =  $this->getDemoData();
         return $res;
     }
 
+    /*
     public function queryPersonById($id)
     {
         $result = array();
@@ -18,6 +19,7 @@ class DataHandler
             }
         }
         return $result;
+  '/
     }
     /* BRAUCHEN WIR NICHT MEHR ABER SICHERHEITSHALBER
     public function queryPersonByName($name)
@@ -47,6 +49,8 @@ class DataHandler
     {
 
         $connect = connecttodb();
+
+        
         if($connect)
         {
             try
