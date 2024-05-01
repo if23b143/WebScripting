@@ -147,7 +147,7 @@ class DataHandler
                 $apTermin1 = $_POST['new_appointment_select_1'];
                 $apTermin2 = $_POST['new_appointment_select_2'];
                 $apTermin3 = $_POST['new_appointment_select_3'];
-
+                $Name = $_POST['Username'];
 
                 $query2 = "INSERT INTO voting (Username, Termin1, Termin2, Termin3, Kommentar) VALUES ('$Name', '$apTermin1', '$apTermin2', '$apTermin3', '$Comment')";
 
@@ -160,7 +160,7 @@ class DataHandler
             }
         }
 
-        $Name = $_POST['Username']
+        
 
     
 
