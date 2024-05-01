@@ -3,9 +3,21 @@ include("./models/appointment.php");
 include("./dbConfig.php");
 class DataHandler
 {
-    public function queryAppointment()
+    public function queryAppointments()
     {
-        $res =  $this->getDemoData();
+        $res =  $this->getDemoData2();
+        return $res;
+    }
+
+    public function create_new_appointment()
+    {
+        $res =  $this->putintodatabase();
+        return $res;
+    }
+
+    public function vote_in_appointment()
+    {
+        $res =  $this->putintodatabase2();
         return $res;
     }
 
@@ -23,7 +35,7 @@ class DataHandler
     }
     /* BRAUCHEN WIR NICHT MEHR ABER SICHERHEITSHALBER
     public function queryPersonByName($name)
-    {
+    {+
         $result = array();
         foreach ($this->queryPersons() as $val) {
             if ($val[0]->lastname == $name) {
@@ -33,7 +45,7 @@ class DataHandler
         return $result;
     }
     */
-
+/*
     private static function getDemoData()
     {
         $demodata = [
@@ -42,7 +54,7 @@ class DataHandler
         ];
         return $demodata;
     }
-
+*/
     //Holt die Informationen aus der appointment Datenbank
 
     private static function getDemoData2()
