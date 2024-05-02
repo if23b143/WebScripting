@@ -518,7 +518,7 @@ function create_new_appointment(Data){
         success: function (response) {
             //RESPONSE AUF UNSER PROJEKT ÄNDERN
            console.log("CREATE APPOINTMENT FUNKTIONIERT");
-
+           location.reload();
 
 
 
