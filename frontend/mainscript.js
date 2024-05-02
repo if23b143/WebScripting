@@ -161,6 +161,61 @@ function loaddata() {
             ///////////////CHANGE THIS --> CHATGPT HAT EINE LÖSUNG --> NICHT SO GUT ABER
            response[0].appointment.forEach(element => {
              //for (var i = 0; i < 2; i++) {
+                // Parse the ablaufdatum string to a Date object
+    const ablaufdatum = new Date(element.ablaufdatum);
+    const currentDate = new Date();
+            console.log('#' + element.id + ' .form_from_list');
+    // Check if the ablaufdatum is before the current date
+    if (ablaufdatum < currentDate) {
+        // If ablaufdatum is in the past, remove the form
+        $('.appointment-group').append(
+                    
+            '<a class="list-group-item list-group-item-action list-group-item-danger" aria-current="true">' +
+                '<div class="d-flex w-100 justify-content-between">' +
+                    '<h5 class="mb-1">' + element.titel +'</h5>' +
+                    '<small>bis <strong>' + element.ablaufdatum +'</strong></small>' +
+                '</div>' +
+                
+                '<div class="content_from_list" id="' + element.id + '">' +
+
+                    '<div class="statistic_from_list">' +
+                        '<ul class="list-group list-group-horizontal">' +
+                            '<li class="list-group-item list-group-item-dark">Ort</li>' +
+                            '<li class="list-group-item flex-grow-1">'+ element.ort +'</li>' +
+                        '</ul>' +
+                        
+                        '<br>' +
+                        '<h5>Abstimmung:</h5>' +
+                        '<ol class="list-group list-group-numbered">' +
+                            '<li class="list-group-item d-flex justify-content-between align-items-start">' +
+                                '<div class="fw-bold ms-2 me-auto">' + element.Auswahl1 + '</div>' +
+                                '<span class="badge bg-primary rounded-pill voting1">0 Vote</span>' +
+                            '</li>' +
+                            '<li class="list-group-item d-flex justify-content-between align-items-start">' +
+                                '<div class="fw-bold ms-2 me-auto">' + element.Auswahl2 + '</div>' +
+                                '<span class="badge bg-primary rounded-pill voting2">0 Vote</span>' +
+                            '</li>' +
+                            '<li class="list-group-item d-flex justify-content-between align-items-start">' +
+                                '<div class="fw-bold ms-2 me-auto">' + element.Auswahl3 + '</div>' +
+                                '<span class="badge bg-primary rounded-pill voting3">0 Vote</span>' +
+                            '</li>' +
+                        '</ol>' +
+                        '<br>' +
+
+                        '<h5>Kommentare:</h5>' +
+                        '<div class="kommentare">' + 
+                        '<ul class="list-group list-group-horizontal">' +
+                            
+                        '</ul>' +
+                        '</div>' +
+                        
+                    '</div>' +
+                    '<form class="form_from_list">' +
+                    '<h5> Sorry das Voting ist zu Ende </h5>' +
+                    '</form>' +
+                    '</div>' +
+                '</a>');
+    } else {
           
                 $('.appointment-group').append(
                     
@@ -169,7 +224,7 @@ function loaddata() {
                         '<h5 class="mb-1">' + element.titel +'</h5>' +
                         '<small>bis <strong>' + element.ablaufdatum +'</strong></small>' +
                     '</div>' +
-                    '<p class="mb-1">von <strong>Alex</strong> </p>' +
+                    
                     '<div class="content_from_list" id="' + element.id + '">' +
 
                         '<div class="statistic_from_list">' +
@@ -199,8 +254,7 @@ function loaddata() {
                             '<h5>Kommentare:</h5>' +
                             '<div class="kommentare">' + 
                             '<ul class="list-group list-group-horizontal">' +
-                                '<li class="list-group-item list-group-item-dark">Alex</li>' +
-                                '<li class="list-group-item flex-grow-1">Ein tolles Meeting!</li>' + 
+                                
                             '</ul>' +
                             '</div>' +
                             
@@ -233,6 +287,7 @@ function loaddata() {
                             '</form>' +
                     '</div>' +
                 '</a>');
+    }
             });
             
             /*
