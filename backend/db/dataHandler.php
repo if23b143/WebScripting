@@ -15,9 +15,9 @@ class DataHandler
         return $combinedData;
     }
 
-    public function create_new_appointment()
+    public function create_new_appointment($param)
     {
-        $res =  $this->putintoAppointmentDataBase();
+        $res =  $this->putintoAppointmentDataBase($param);
         return $res;
     }
 
@@ -127,35 +127,37 @@ class DataHandler
     }
 
         //Die Eingegebenen Informationen werden in die Datenbank eingetragen
-    private static function putintoAppointmentDataBase()
+    private static function putintoAppointmentDataBase($appointment)
     {
 
-        $voteUserName;
-        $voteTermin1;
-        $voteTermin2;
-        $voteTermin3;
-        $voteKommentar;
-        $voteAppointment_ID_FK;
-
         $connect = connecttodb();
+        if (!$connect) {
+            error_log("Hallo im Datenbank fellgeschlagen");
+            echo "Verbindung zur Datenbank fehlt.";
+            return;
+        }
+    
+        //return $appointment;
+        $json_data = json_decode($appointment, true);
+        //return $json_data;
 
-        if($_SERVER["REQUEST_METHOD"] == "GET")
-        {
             //Hier wird geprüft ob die einzelnen Felder leer sind oder nicht
-           
+            if ($json_data !== null) {
+                $stmt = $connect->prepare("INSERT INTO appointments (Titel, Ort, Ablaufdatum, Auswahl1, Auswahl2, Auswahl3) VALUES (?, ?, ?, ?, ?, ?)");
+                
+                if (TRUE) {
 
-                $voteUserName = $_GET['form_voting_name'];
-                $voteTermin1 = $_GET['from_voting_Check1'];
-                $voteTermin2 = $_GET['form_voting_Check2'];
-                $voteTermin3 = $_GET['form_voting_Check3'];
-                $voteKommentar = $_GET['exampleFormControlTextarea1'];
-                $voteAppointment_ID_FK = 1;
+                return $json_data['ablaufdatum'];
+                // Variablen für die Abfrage binden
+                $stmt->bind_param("ssssss", $json_data['name'], $json_data['ort'], $json_data['ablaufdatum'], $json_data['auswahl1'], $json_data['auswahl2'], $json_data['auswahl3']);
+                
+                // Abfrage ausführen
+                $stmt->execute();
 
-
-                $query = "INSERT INTO voting (Titel, Ort, Ablaufdatum, Auswahl1, Auswahl2, Auswahl3) VALUES ('$apName', '$apOrt', '$apabdate', '$apSelect1', '$apSelect2', '$apSelect3')";
+                //$query = "INSERT INTO voting (Titel, Ort, Ablaufdatum, Auswahl1, Auswahl2, Auswahl3) VALUES ('$apName', '$apOrt', '$apabdate', '$apSelect1', '$apSelect2', '$apSelect3')";
                 
                 //Hier wird geprüft ob die Eintragung erfolgreich war
-
+                    /*
                 if($connect->query($query) === TRUE && $connect->query($query2) === TRUE) 
                 {
                     echo("Appointment erfolgreich angelegt!");
@@ -163,11 +165,26 @@ class DataHandler
                 else
                 {
                     echo("Ein Unbekannter Fehler ist aufgetreten!");
+                } */
+                if ($stmt->affected_rows > 0) {
+                    //echo "Daten erfolgreich in die Datenbank eingefügt.";
+                    return 1;
+                } else {
+                    echo "Fehler beim Einfügen der Daten in die Datenbank.";
                 }
-
-            
-
+    
+                // Abfrage schließen
+                $stmt->close();
+                //error_log("Print" . $stmt);
+            } else {
+                echo "Fehler beim Vorbereiten der Datenbankabfrage.";
+            }
+        } else {
+            echo "Fehler beim Verarbeiten der JSON-Daten.";
         }
+            
+            
+        
 
         $connect->close();
 

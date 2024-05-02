@@ -18,7 +18,7 @@ class SimpleLogic
                 break;
             case "create_new_appointment":
                 error_log("Im new_Appointment");
-                $res = $this->dh->create_new_appointment();
+                $res = $this->dh->create_new_appointment($param);
                 break;
             case "vote_in_appointment":
                 //error_log("Im Vote-Appointment-Case");

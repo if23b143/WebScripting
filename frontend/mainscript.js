@@ -77,11 +77,20 @@ $(document).ready(function () {
         }
     });
 
-    $('.form_from_appointment_create').submit(function(event) {
-       
-    
+    $('.form_from_appointment_create').on('submit', function(event) {
+    //$('.form_from_appointment_create').submit(function(event) {
+        event.preventDefault();
+        var formData = {
+            name: $('input[aria-describedby="new_appointment_name"]').val(),
+            ort: $('input[aria-describedby="new_appointment_ort"]').val(),
+            ablaufdatum: $('input[aria-describedby="new_appointment_date"]').val(),
+            auswahl1: $('input[aria-describedby="new_appointment_select_1"]').val(),
+            auswahl2: $('input[aria-describedby="new_appointment_select_2"]').val(),
+            auswahl3: $('input[aria-describedby="new_appointment_select_3"]').val()
+        };
+        console.log(formData);
         // Führe die Funktion create_new_appointment() aus, wenn das Formular abgeschickt wird
-        create_new_appointment();
+        create_new_appointment(formData);
     });
     /*
     $('.form_from_list').submit(function(event) {
@@ -497,14 +506,14 @@ function loaddata() {
     });
 }
 
-function create_new_appointment(){
+function create_new_appointment(Data){
     $.ajax({
         type: "GET",
         url: "../backend/serviceHandler.php",
         cache: false,
         async: true, // Setze async auf true
         //METHODE ÄNDERN
-        data: {method: "create_new_appointment", param: 0},
+        data: {method: "create_new_appointment", param: JSON.stringify(Data)},
         dataType: "json",
         success: function (response) {
             //RESPONSE AUF UNSER PROJEKT ÄNDERN
