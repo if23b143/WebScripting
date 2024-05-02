@@ -147,7 +147,7 @@ class DataHandler
                 
                 if (TRUE) {
 
-                return $json_data['ablaufdatum'];
+                //return $json_data['ablaufdatum'];
                 // Variablen für die Abfrage binden
                 $stmt->bind_param("ssssss", $json_data['name'], $json_data['ort'], $json_data['ablaufdatum'], $json_data['auswahl1'], $json_data['auswahl2'], $json_data['auswahl3']);
                 
