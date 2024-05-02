@@ -11,7 +11,6 @@ class SimpleLogic
 
     function handleRequest($method, $param)
     {
-        //error_log($method);
         switch ($method) {
             case "queryAppointments":
                 $res = $this->dh->queryAppointments();
@@ -21,15 +20,8 @@ class SimpleLogic
                 $res = $this->dh->create_new_appointment($param);
                 break;
             case "vote_in_appointment":
-                //error_log("Im Vote-Appointment-Case");
-                
                 $res = $this->dh->vote_in_appointment($param);
                 break;
-            /*
-            case "queryPersonByName":
-                $res = $this->dh->queryPersonByName($param);
-                break;
-            */
             default:
                 $res = null;
                 error_log("im default");
