@@ -109,12 +109,16 @@ $(document).ready(function () {
     // Extrahiere die Daten aus dem Formular
     var formData = {
         name: $(this).find('input[type="text"]').val(),
-        auswahl1: $(this).find('#form_voting_Check1').prop('checked'),
+        auswahl1: $(this).find('#from_voting_Check1').prop('checked'),
         auswahl2: $(this).find('#form_voting_Check2').prop('checked'),
         auswahl3: $(this).find('#form_voting_Check3').prop('checked'),
-        kommentare: $(this).find('textarea').val()
+        kommentare: $(this).find('textarea').val(),
+        Appointment_FK: $(this).parent().attr('id')
+       
     };
-    console.log(formData);
+    
+    console.log($('.form_from_list').parent().attr('id'));
+    //console.log(formData);
     $.ajax({
         type: "GET",
         url: "../backend/serviceHandler.php",
@@ -124,8 +128,9 @@ $(document).ready(function () {
         dataType: "json",
         success: function (response) {
             //RESPONSE AUF UNSER PROJEKT ÄNDERN
-            alert("VOTE APPOINTMENT FUNKTIONIERT");
-            console.log(response);
+            //alert("VOTE APPOINTMENT FUNKTIONIERT");
+            //console.log(response);
+            location.reload();
 
 
 
@@ -314,15 +319,15 @@ function loaddata() {
                                 '<h5>Termine</h5>' +
                                 '<div class="form-check">' +
                                     '<input type="checkbox" class="form-check-input" value="" id="from_voting_Check1">' +
-                                    '<label class="form-check-label" for="exampleCheck1">' + element.Auswahl1 + '</label>' +
+                                    '<label class="form-check-label" for="from_voting_Check1">' + element.Auswahl1 + '</label>' +
                                 '</div>' +
                                 '<div class="form-check">' +
                                     '<input type="checkbox" class="form-check-input" value="" id="form_voting_Check2">' +
-                                    '<label class="form-check-label" for="exampleCheck2">' + element.Auswahl2 + '</label>' +
+                                    '<label class="form-check-label" for="from_voting_Check2">' + element.Auswahl2 + '</label>' +
                                 '</div>' +
                                 '<div class="form-check">' +
                                     '<input type="checkbox" class="form-check-input" value="" id="form_voting_Check3">' +
-                                    '<label class="form-check-label" for="exampleCheck3">' + element.Auswahl3 + '</label>' +
+                                    '<label class="form-check-label" for="form_voting_Check3">' + element.Auswahl3 + '</label>' +
                                 '</div>' +
                                 '<div class="mb-3">' +
                                     '<label for="exampleFormControlTextarea1" class="form-label"><h5>Kommentare</h5></label>' +
@@ -524,9 +529,9 @@ function vote_in_appointment(formData){
         dataType: "json",
         success: function (response) {
             //RESPONSE AUF UNSER PROJEKT ÄNDERN
-            alert("VOTE APPOINTMENT FUNKTIONIERT");
-            console.log(response);
-
+            //alert("VOTE APPOINTMENT FUNKTIONIERT");
+            //console.log(response);
+            location.reload();
 
 
         } , error: function(){

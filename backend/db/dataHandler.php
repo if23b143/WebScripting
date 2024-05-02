@@ -186,24 +186,34 @@ class DataHandler
     
         // JSON-Daten aus dem String extrahieren
         $json_data = json_decode($vote_in_appointment, true);
+        //return $json_data;
         
         // Überprüfen, ob die JSON-Daten erfolgreich decodiert wurden
         if ($json_data !== null) {
             // Datenbankabfrage vorbereiten
-            $stmt = $connect->prepare("INSERT INTO voting (Username, Termin1, Termin2, Termin3, Kommentar) VALUES (?, ?, ?, ?, ?)");
+            $stmt = $connect->prepare("INSERT INTO voting (Username, Termin1, Termin2, Termin3, Kommentar, Appointment_ID_FK) VALUES (?, ?, ?, ?, ?, ?)");
             
             // Überprüfen, ob die Abfrage erfolgreich vorbereitet wurde
-            if ($stmt) {
-               
+            if (TRUE) {
+                /*
+                $Test_variable1 = "Hallo";
+                $Test_variable2 = 1;
+                $Test_variable3 = 0;
+                $Test_variable4 = 1;
+                $Test_variable5 = ; 
+                $Test = 1; */
+                //return $json_data["name"];
                 // Variablen für die Abfrage binden
-                $stmt->bind_param("siiis", $json_data['Username'], $json_data['Termin1'], $json_data['Termin2'], $json_data['Termin3'], $json_data['Kommentar']);
+                $stmt->bind_param("sssssi", $json_data['name'], $json_data['auswahl1'], $json_data['auswahl2'], $json_data['auswahl3'], $json_data['kommentare'], $json_data['Appointment_FK']);
                 
                 // Abfrage ausführen
                 $stmt->execute();
-    
+                //return print_r($stmt);
+
                 // Überprüfen, ob die Abfrage erfolgreich war
                 if ($stmt->affected_rows > 0) {
-                    echo "Daten erfolgreich in die Datenbank eingefügt.";
+                    //echo "Daten erfolgreich in die Datenbank eingefügt.";
+                    return 1;
                 } else {
                     echo "Fehler beim Einfügen der Daten in die Datenbank.";
                 }
