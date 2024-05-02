@@ -163,12 +163,6 @@ class DataHandler
     {
 
         $connect = connecttodb();
-
-        $Name;
-        $apTermin1;
-        $apTermin2;
-        $apTermin3;
-        $Comment;
         
         if($connect)
         {
