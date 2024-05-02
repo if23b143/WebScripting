@@ -83,13 +83,59 @@ $(document).ready(function () {
         // Führe die Funktion create_new_appointment() aus, wenn das Formular abgeschickt wird
         create_new_appointment();
     });
-
+    /*
     $('.form_from_list').submit(function(event) {
-        event.preventDefault(); // Verhindert das Standardverhalten des Formulars (Seite neu laden)
+        //event.preventDefault(); // Verhindert das Standardverhalten des Formulars (Seite neu laden)
     
         // Führe die Funktion create_new_appointment() aus, wenn das Formular abgeschickt wird
-        vote_in_appointment();
+        var formData = {
+            name: $('#form_voting_name').val(), // Name
+            // Beispiel: Hier die Annahme, dass die Termine als Checkboxen mit den IDs "form_voting_Check1", "form_voting_Check2", "form_voting_Check3" existieren
+            termin1: $('#form_voting_Check1').prop('checked'), // Termin 1
+            termin2: $('#form_voting_Check2').prop('checked'), // Termin 2
+            termin3: $('#form_voting_Check3').prop('checked'), // Termin 3
+            kommentar: $('#exampleFormControlTextarea1').val() // Kommentar
+        };
+    
+    
+        // Führe die Funktion create_new_appointment() aus und übergebe die Formulardaten
+        vote_in_appointment(formData);
+    }); */
+
+    // Event-Handler für das Absenden des Formulars innerhalb der Liste
+    $('#overlay_content').on('submit', '.form_from_list', function(event) {
+    event.preventDefault(); // Verhindert das Standardverhalten des Formulars
+
+    // Extrahiere die Daten aus dem Formular
+    var formData = {
+        name: $(this).find('input[type="text"]').val(),
+        auswahl1: $(this).find('#form_voting_Check1').prop('checked'),
+        auswahl2: $(this).find('#form_voting_Check2').prop('checked'),
+        auswahl3: $(this).find('#form_voting_Check3').prop('checked'),
+        kommentare: $(this).find('textarea').val()
+    };
+    console.log(formData);
+    $.ajax({
+        type: "GET",
+        url: "../backend/serviceHandler.php",
+        cache: false,
+        //METHODE ÄNDERN -->JSON.stringify(formData)
+        data: {method: "vote_in_appointment", param: JSON.stringify(formData)},
+        dataType: "json",
+        success: function (response) {
+            //RESPONSE AUF UNSER PROJEKT ÄNDERN
+            alert("VOTE APPOINTMENT FUNKTIONIERT");
+            console.log(response);
+
+
+
+        } , error: function(xhr){
+            console.log("HIER IST EIN FEHLER IM VOTE APPOINTMENT");
+            var errorMessage = xhr.status + ': ' + xhr.statusText;
+            console.log('AJAX Error: ' + errorMessage);
+        }
     });
+});
     
 
     loaddata();
@@ -162,10 +208,10 @@ function loaddata() {
            response[0].appointment.forEach(element => {
              //for (var i = 0; i < 2; i++) {
                 // Parse the ablaufdatum string to a Date object
-    const ablaufdatum = new Date(element.ablaufdatum);
-    const currentDate = new Date();
-            console.log('#' + element.id + ' .form_from_list');
-    // Check if the ablaufdatum is before the current date
+            const ablaufdatum = new Date(element.ablaufdatum);
+            const currentDate = new Date();
+                    //console.log('#' + element.id + ' .form_from_list');
+            // Check if the ablaufdatum is before the current date
     if (ablaufdatum < currentDate) {
         // If ablaufdatum is in the past, remove the form
         $('.appointment-group').append(
@@ -260,22 +306,22 @@ function loaddata() {
                             
                         '</div>' +
 
-                        '<form class="form_from_list">' +
+                        '<form class="form_from_list" method="GET">' +
                                 '<div class="input-group mb-3">' +
-                                    '<span class="input-group-text" id="basic-addon1">Name</span>' +
+                                    '<span class="input-group-text" id="form_voting_name">Name</span>' +
                                     '<input type="text" class="form-control" placeholder="zB.: Max Mustermann" aria-label="Username" aria-describedby="basic-addon1">' +
                                 '</div>' +
                                 '<h5>Termine</h5>' +
                                 '<div class="form-check">' +
-                                    '<input type="checkbox" class="form-check-input" value="" id="exampleCheck1">' +
+                                    '<input type="checkbox" class="form-check-input" value="" id="from_voting_Check1">' +
                                     '<label class="form-check-label" for="exampleCheck1">' + element.Auswahl1 + '</label>' +
                                 '</div>' +
                                 '<div class="form-check">' +
-                                    '<input type="checkbox" class="form-check-input" value="" id="exampleCheck2">' +
+                                    '<input type="checkbox" class="form-check-input" value="" id="form_voting_Check2">' +
                                     '<label class="form-check-label" for="exampleCheck2">' + element.Auswahl2 + '</label>' +
                                 '</div>' +
                                 '<div class="form-check">' +
-                                    '<input type="checkbox" class="form-check-input" value="" id="exampleCheck3">' +
+                                    '<input type="checkbox" class="form-check-input" value="" id="form_voting_Check3">' +
                                     '<label class="form-check-label" for="exampleCheck3">' + element.Auswahl3 + '</label>' +
                                 '</div>' +
                                 '<div class="mb-3">' +
@@ -451,6 +497,7 @@ function create_new_appointment(){
         type: "GET",
         url: "../backend/serviceHandler.php",
         cache: false,
+        async: true, // Setze async auf true
         //METHODE ÄNDERN
         data: {method: "create_new_appointment", param: 0},
         dataType: "json",
@@ -467,18 +514,18 @@ function create_new_appointment(){
     });
 }
 
-function vote_in_appointment(){
+function vote_in_appointment(formData){
     $.ajax({
         type: "GET",
         url: "../backend/serviceHandler.php",
         cache: false,
-        //METHODE ÄNDERN
-        data: {method: "vote_in_appointment", param: 0},
+        //METHODE ÄNDERN -->JSON.stringify(formData)
+        data: {method: "vote_in_appointment", param: formData},
         dataType: "json",
         success: function (response) {
             //RESPONSE AUF UNSER PROJEKT ÄNDERN
-           alert("VOTE APPOINTMENT FUNKTIONIERT");
-
+            alert("VOTE APPOINTMENT FUNKTIONIERT");
+            console.log(response);
 
 
 
