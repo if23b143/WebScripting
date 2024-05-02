@@ -170,7 +170,7 @@ function loaddata() {
                         '<small>bis <strong>' + element.ablaufdatum +'</strong></small>' +
                     '</div>' +
                     '<p class="mb-1">von <strong>Alex</strong> </p>' +
-                    '<div class="content_from_list">' +
+                    '<div class="content_from_list" id="' + element.id + '">' +
 
                         '<div class="statistic_from_list">' +
                             '<ul class="list-group list-group-horizontal">' +
@@ -183,27 +183,30 @@ function loaddata() {
                             '<ol class="list-group list-group-numbered">' +
                                 '<li class="list-group-item d-flex justify-content-between align-items-start">' +
                                     '<div class="fw-bold ms-2 me-auto">' + element.Auswahl1 + '</div>' +
-                                    '<span class="badge bg-primary rounded-pill">4 Vote</span>' +
+                                    '<span class="badge bg-primary rounded-pill voting1">0 Vote</span>' +
                                 '</li>' +
                                 '<li class="list-group-item d-flex justify-content-between align-items-start">' +
                                     '<div class="fw-bold ms-2 me-auto">' + element.Auswahl2 + '</div>' +
-                                    '<span class="badge bg-primary rounded-pill">1 Vote</span>' +
+                                    '<span class="badge bg-primary rounded-pill voting2">0 Vote</span>' +
                                 '</li>' +
                                 '<li class="list-group-item d-flex justify-content-between align-items-start">' +
                                     '<div class="fw-bold ms-2 me-auto">' + element.Auswahl3 + '</div>' +
-                                    '<span class="badge bg-primary rounded-pill">14 Vote</span>' +
+                                    '<span class="badge bg-primary rounded-pill voting3">0 Vote</span>' +
                                 '</li>' +
                             '</ol>' +
                             '<br>' +
 
                             '<h5>Kommentare:</h5>' +
+                            '<div class="kommentare">' + 
                             '<ul class="list-group list-group-horizontal">' +
                                 '<li class="list-group-item list-group-item-dark">Alex</li>' +
                                 '<li class="list-group-item flex-grow-1">Ein tolles Meeting!</li>' + 
                             '</ul>' +
+                            '</div>' +
+                            
                         '</div>' +
 
-                        '<form class="form_from_list" id=' + element.id + '>' +
+                        '<form class="form_from_list">' +
                                 '<div class="input-group mb-3">' +
                                     '<span class="input-group-text" id="basic-addon1">Name</span>' +
                                     '<input type="text" class="form-control" placeholder="zB.: Max Mustermann" aria-label="Username" aria-describedby="basic-addon1">' +
@@ -231,6 +234,152 @@ function loaddata() {
                     '</div>' +
                 '</a>');
             });
+            
+            /*
+            response[0].voting.forEach(votingElement => {
+                // Finde das entsprechende HTML-Element anhand der ID
+                let appointmentElement = $('#' + votingElement.Appointment_ID_FK);
+            
+                // Überprüfe, ob das HTML-Element gefunden wurde
+                if (appointmentElement.length > 0) {
+                    // Füge die Kommentare und den Benutzernamen hinzu
+                    appointmentElement.find('.kommentare').append(
+                        '<ul class="list-group list-group-horizontal">' +
+                            '<li class="list-group-item list-group-item-dark">' + votingElement.Username + '</li>' +
+                            '<li class="list-group-item flex-grow-1">' + votingElement.Kommentar + '</li>' +
+                        '</ul>'
+                    );
+                }
+            }); 
+
+            let votingCounts = {
+                voting1: 0,
+                voting2: 0,
+                voting3: 0
+            };
+            
+            // Zähle die Votes für jeden Termin
+            response[0].voting.forEach(votingElement => {
+                if (votingElement.Termin1 == 1) {
+                    votingCounts.voting1++;
+                    //console.log("Voting1:"+votingCounts.voting1)
+                }
+                if (votingElement.Termin2 == 1) {
+                    votingCounts.voting2++;
+                }
+                if (votingElement.Termin3 == 1) {
+                    votingCounts.voting3++;
+                }
+            
+                // Finde das entsprechende HTML-Element anhand der ID
+                let appointmentElement = $('#' + votingElement.Appointment_ID_FK);
+            
+                // Überprüfe, ob das HTML-Element gefunden wurde
+                if (appointmentElement.length > 0) {
+                    // Füge die Kommentare und den Benutzernamen hinzu
+                    appointmentElement.find('.kommentare').append(
+                        '<ul class="list-group list-group-horizontal">' +
+                            '<li class="list-group-item list-group-item-dark">' + votingElement.Username + '</li>' +
+                            '<li class="list-group-item flex-grow-1">' + votingElement.Kommentar + '</li>' +
+                        '</ul>'
+                    );
+                }
+            });
+            //console.log(votingCounts.voting1)
+            // Aktualisiere die Anzahl der Votes in der HTML-Ansicht 
+            
+            $('.voting1').text(votingCounts.voting1 + ' Vote');
+            $('.voting2').text(votingCounts.voting2 + ' Vote');
+            $('.voting3').text(votingCounts.voting3 + ' Vote'); 
+
+            
+            
+            response[0].voting.forEach(votingElement => {
+                if (votingElement.Termin1 == 1) {
+                    
+                    let appointmentElement = $('#' + votingElement.Appointment_ID_FK);
+                    console.log("appointmentElement:" + votingElement.Appointment_ID_FK);
+                    if (appointmentElement.hasClass('content_from_list')) {
+                        console.log("BIN HIER");
+                        votingCounts.voting1++;
+                    }
+                }
+                if (votingElement.Termin2 == 1) {
+                    let appointmentElement = $('#' + votingElement.Appointment_ID_FK);
+                    if (appointmentElement.hasClass('content_from_list')) {
+                        votingCounts.voting2++;
+                    }
+                }
+                if (votingElement.Termin3 == 1) {
+                    let appointmentElement = $('#' + votingElement.Appointment_ID_FK);
+                    if (appointmentElement.hasClass('content_from_list')) {
+                        votingCounts.voting3++;
+                    }
+                }
+            
+                // Finde das entsprechende HTML-Element anhand der ID
+                let appointmentElement = $('#' + votingElement.Appointment_ID_FK);
+            
+                // Überprüfe, ob das HTML-Element gefunden wurde
+                if (appointmentElement.length > 0) {
+                    // Füge die Kommentare und den Benutzernamen hinzu
+                    appointmentElement.find('.kommentare').append(
+                        '<ul class="list-group list-group-horizontal">' +
+                            '<li class="list-group-item list-group-item-dark">' + votingElement.Username + '</li>' +
+                            '<li class="list-group-item flex-grow-1">' + votingElement.Kommentar + '</li>' +
+                        '</ul>'
+                    );
+                }
+            });
+            
+            // Aktualisiere die Anzahl der Votes in der HTML-Ansicht
+            $('.voting1').text(votingCounts.voting1 + ' Vote');
+            $('.voting2').text(votingCounts.voting2 + ' Vote');
+            $('.voting3').text(votingCounts.voting3 + ' Vote'); */
+
+            let votingCounts = {
+                voting1: 0,
+                voting2: 0,
+                voting3: 0
+            };
+            
+            
+            response[0].voting.forEach(votingElement => {
+                let appointmentElement = $('#' + votingElement.Appointment_ID_FK + '.content_from_list');
+            
+                if (votingElement.Termin1 == 1 && appointmentElement.length > 0) {
+                    let voting2Element = appointmentElement.find('.voting1');
+                    let currentVotes = parseInt(voting2Element.text());
+                    voting2Element.text((currentVotes + 1) + ' Vote');
+                }
+                if (votingElement.Termin2 == 1 && appointmentElement.length > 0) {
+                    let voting2Element = appointmentElement.find('.voting2');
+                    let currentVotes = parseInt(voting2Element.text());
+                    voting2Element.text((currentVotes + 1) + ' Vote');
+                }
+                if (votingElement.Termin3 == 1 && appointmentElement.length > 0) {
+                    let voting2Element = appointmentElement.find('.voting3');
+                    let currentVotes = parseInt(voting2Element.text());
+                    voting2Element.text((currentVotes + 1) + ' Vote');
+                }
+            
+                // Überprüfe, ob das HTML-Element gefunden wurde und ob die Klasse content_from_class vorhanden ist
+                if (appointmentElement.length > 0) {
+                    // Füge die Kommentare und den Benutzernamen hinzu
+                    appointmentElement.find('.kommentare').append(
+                        '<ul class="list-group list-group-horizontal">' +
+                            '<li class="list-group-item list-group-item-dark">' + votingElement.Username + '</li>' +
+                            '<li class="list-group-item flex-grow-1">' + votingElement.Kommentar + '</li>' +
+                        '</ul>'
+                    );
+            
+                   
+                    
+                }
+
+
+            });
+            
 
             $(".list-group .list-group-item .content_from_list").hide();
 
