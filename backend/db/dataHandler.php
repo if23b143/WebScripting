@@ -5,8 +5,8 @@ class DataHandler
 {
     public function queryAppointments()
     {
-        $appointment =  $this->getDemoData2();
-        $voting =  $this->putintodatabase2();
+        $appointment =  $this->getAppointmentData();
+        $voting =  $this->getVotingData();
 
         $combinedData[] = [
             'appointment' => $appointment,
@@ -23,7 +23,7 @@ class DataHandler
 
     public function vote_in_appointment()
     {
-        $res =  $this->putintodatabase2();
+        $res =  $this->getVotingData();
         return $res;
     }
 
@@ -63,7 +63,7 @@ class DataHandler
 */
     //Holt die Informationen aus der appointment Datenbank
 
-    private static function getDemoData2()
+    private static function getAppointmentData()
     {
 
         $connect = connecttodb();
@@ -173,7 +173,7 @@ class DataHandler
     }
 
 
-    private static function putintodatabase2()
+    private static function getVotingData()
     {
 
         $connect = connecttodb();
